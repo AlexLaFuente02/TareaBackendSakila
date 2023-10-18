@@ -1,0 +1,35 @@
+HELP.md
+LICENSE
+
+### Node JS & MPM ###
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+### Entorno desarrollo ###
+.env
+.env.local
+.env..local
+.env..local.js
+
+
+### Archivos de construcción y compilación ###
+dist/
+.nuxt/
+.cache/
+
+### Archivos de registro y temporales ###
+*.log
+*.tmp
+
+### Archivos de configuración personalizados (modificar en base al que tengamos) ###
+custom-config.js
+my-specific-file.js
+
+### Archivos de historial o preferencias del IDE ###
+.history/
+.prefs/
+
+### VS Code ###
+.vscode/

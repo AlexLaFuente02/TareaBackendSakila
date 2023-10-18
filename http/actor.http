@@ -1,0 +1,37 @@
+@base_url = http://localhost:3030/actor
+
+###GET ALL DE Actor
+GET {{base_url}}/
+Accept: application/json
+
+###GET BY ID de Actor
+GET {{base_url}}/1
+Accept: application/json
+
+###POST de Actor
+POST {{base_url}}/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "first_name": "Quelo",
+  "last_name": "Escobar",
+  "birth_date": "1990-01-15",
+  "gender": "Female"
+}
+
+###PUT de Actor
+PUT {{base_url}}/1
+Content-Type: application/json
+Accept: application/json
+
+{
+  "first_name": "Samael",
+  "last_name": "Perez",
+  "birth_date": "2002-12-15",
+  "gender": "Male"
+}
+
+###DELETE de Actor
+DELETE {{base_url}}/1
+Accept: application/json
