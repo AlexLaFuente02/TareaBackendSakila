@@ -1,0 +1,19 @@
+@base_url = http://localhost:3030/auth
+
+### Inicio de Sesión
+POST {{base_url}}/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "nuevoUsuario",
+  "password": "miContraseñaSegura"
+}
+
+### Cierre de Sesión
+GET {{base_url}}/logout
+Accept: application/json
+
+### Verificar Estado de Autenticación
+GET {{base_url}}/status
+Accept: application/json

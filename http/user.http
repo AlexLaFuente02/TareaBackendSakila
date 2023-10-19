@@ -1,0 +1,7 @@
+POST http://localhost:3030/user/create
+Content-Type: application/json
+
+{
+  "username": "nuevoUsuario",
+  "plainPassword": "miContraseñaSegura"
+}

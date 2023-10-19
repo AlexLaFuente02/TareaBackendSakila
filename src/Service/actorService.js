@@ -11,7 +11,21 @@ const getAllActors = async () => {
     return new ResponseDTO('ACT-0000', actorDTOs, 'Actores obtenidos correctamente');
   } catch (error) {
     console.error('Error al obtener todos los actores:', error);
-    return new ResponseDTO('ACT-1001', null, 'Error al obtener todos los actores');
+    return new ResponseDTO('ACT-1001', null, 'Error al obtener todos los actores: '+ error);
+  }
+};
+
+const getActorsWithPagination = async (offset, perPage) => {
+  console.log(`Obteniendo actores con paginación: offset ${offset}, perPage ${perPage}`);
+  try {
+    const actors = await ActorENT.findAll({ offset, limit: perPage });
+    const actorDTOs = actors.map((actor) => new ActorDTO(actor));
+
+    console.log('Actores obtenidos con paginación correctamente.');
+    return new ResponseDTO('ACT-0000', actorDTOs, 'Actores obtenidos con paginación correctamente');
+  } catch (error) {
+    console.error('Error al obtener actores con paginación:', error);
+    return new ResponseDTO('ACT-1001', null, 'Error al obtener actores con paginación: ' + error);
   }
 };
 
@@ -27,7 +41,7 @@ const getActorById = async (id) => {
     return new ResponseDTO('ACT-0000', new ActorDTO(actor), 'Actor obtenido correctamente');
   } catch (error) {
     console.error(`Error al obtener el actor con ID: ${id}.`, error);
-    return new ResponseDTO('ACT-1002', null, 'Error al obtener el actor');
+    return new ResponseDTO('ACT-1002', null, 'Error al obtener el actor '+ error);
   }
 };
 
@@ -39,7 +53,7 @@ const createActor = async (actorData) => {
     return new ResponseDTO('ACT-0000', new ActorDTO(nuevoActor), 'Actor creado correctamente');
   } catch (error) {
     console.error('Error al crear el actor:', error);
-    return new ResponseDTO('ACT-1003', null, 'Error al crear el actor');
+    return new ResponseDTO('ACT-1003', null, 'Error al crear el actor '+ error);
   }
 };
 
@@ -58,7 +72,7 @@ const updateActor = async (id, actorData) => {
     return new ResponseDTO('ACT-0000', new ActorDTO(actor), 'Actor actualizado correctamente');
   } catch (error) {
     console.error(`Error al actualizar el actor con ID: ${id}.`, error);
-    return new ResponseDTO('ACT-1004', null, 'Error al actualizar el actor');
+    return new ResponseDTO('ACT-1004', null, 'Error al actualizar el actor '+ error);
   }
 };
 
@@ -77,13 +91,14 @@ const deleteActor = async (id) => {
     return new ResponseDTO('ACT-0000', 'Actor eliminado con éxito');
   } catch (error) {
     console.error(`Error al eliminar el actor con ID: ${id}.`, error);
-    return new ResponseDTO('ACT-1005', null, 'Error al eliminar el actor');
+    return new ResponseDTO('ACT-1005', null, 'Error al eliminar el actor '+ error);
   }
 };
 
 module.exports = {
   getAllActors,
   getActorById,
+  getActorsWithPagination,
   createActor,
   updateActor,
   deleteActor,

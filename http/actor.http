@@ -4,6 +4,10 @@
 GET {{base_url}}/
 Accept: application/json
 
+###GET ALL DE Actor paginado
+GET {{base_url}}/paginado
+Accept: application/json
+
 ###GET BY ID de Actor
 GET {{base_url}}/1
 Accept: application/json
@@ -14,9 +18,9 @@ Content-Type: application/json
 Accept: application/json
 
 {
-  "first_name": "Quelo",
-  "last_name": "Escobar",
-  "birth_date": "1990-01-15",
+  "first_name": "gabi",
+  "last_name": "Fofa",
+  "birth_date": "2003-02-20",
   "gender": "Female"
 }
 

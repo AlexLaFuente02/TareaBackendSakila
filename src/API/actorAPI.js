@@ -13,6 +13,23 @@ router.get('/', async (req, res) => {
   });
 });
 
+// Ruta para obtener actores con paginación
+router.get('/paginado', async (req, res) => {
+  const { page = 1, perPage = 3 } = req.query;
+  const offset = (page - 1) * perPage;
+
+  console.log(`GET request received for getAllActors with pagination: page ${page}, perPage ${perPage}`);
+
+  const response = await actorService.getActorsWithPagination(offset, perPage);
+
+  res.json({
+    method: 'getActorsWithPagination',
+    code: response.code,
+    result: response.result,
+    message: response.message,
+  });
+});
+
 router.get('/:id', async (req, res) => {
   console.log(`GET request received for getActorById with ID: ${req.params.id}`);
   const response = await actorService.getActorById(req.params.id);
