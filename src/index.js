@@ -4,9 +4,13 @@ const PORT = process.env.PORT || 3030;
 const actorAPI = require('./API/actorAPI');
 const authAPI = require('./API/authAPI');
 const userAPI = require('./API/userAPI');
+//Seguridad
 const passport = require('passport');
 const session = require('express-session');
 const { isAuthenticated } = require('./Service/authService'); // Importa el middleware isAuthenticated
+
+//Documentacion
+const { swaggerDocs: SwaggerDocs } = require('./swagger');
 
 // Middleware para analizar el cuerpo de las solicitudes JSON
 app.use(express.json());
@@ -29,4 +33,5 @@ app.get('/', (req, res) => {
 // Escucha en el puerto especificado
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
+    SwaggerDocs(app, PORT);
 });
